@@ -2,27 +2,40 @@
 
 Esta API permite o registro e login de usuários, consulta de usuários e registro/consulta de revistas em quadrinhos. Utiliza autenticação JWT e armazena dados em memória.
 
-## Instalação
+## Funcionalidades
+- Registro de usuário (não permite duplicados e necessita de autentição JWT)
+- Login de usuário (obrigatório informar username e password)
+- Consulta de todos os usuários
+- Registro de revistas em quadrinhos (necessário o token JWT para realizar a ação)
+- Consulta de todas as revistas em quadrinhos
+- Banco de dados em memória (os dados são perdidos ao reiniciar o servidor)
+- Documentação Swagger disponível em `/api-docs`
 
-1. Clone o repositório
-2. Instale as dependências:
+## Estrutura de Diretórios
+```
+controllers/         # Rotas e controllers
+models/              # Modelos e "banco de dados" em memória
+services/            # Lógica de negócio
+app.js               # Configuração do Express e rotas
+server.js            # Inicialização do servidor
+swagger.json         # Documentação Swagger
+```
+
+## Instalação e Execução
+
+1. **Clone o repositório**
+2. **Instale as dependências:**
+    ```
+    npm install express jsonwebtoken swagger-ui-express
+    ```
+3. **Inicie o servidor:**
    ```
-npm install express jsonwebtoken swagger-ui-express
+   node server.js
    ```
+4. **Acesse a documentação:**
+   - [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
-## Executando a API
-
-- Para rodar o servidor:
-  ```
-npm start
-  ```
-- Para rodar apenas o app (para testes com Supertest):
-  ```
-// Exemplo em testes:
-const app = require('./app');
-  ```
-
-## Endpoints
+## Endpoints Utilizados
 
 - Documentação Swagger disponível em: `/api-docs`
 - Registro de usuário: `POST /users/register`
@@ -43,4 +56,4 @@ const app = require('./app');
 
 ---
 
-API desenvolvida para fins educacionais.
+API criada para fins didáticos e de automação de testes.
